@@ -6,6 +6,30 @@ import requests
 app = Flask(__name__)
 
 
+@app.route('/post', methods=['POST'])
+def get_alice_request():
+    response = {
+        'session': request.json['session'],
+        'version': request.json['version'],
+        'response': {
+            'end_session': False
+        }
+    }
+    handle_dialog(request.json, response)
+    return json.dumps(response)
+
+
+def handle_dialog(req, res):
+    user_id = req['session']['user_id']
+    if req['session']['new']:
+        res['response']['text'] = 'Привет, какую страну или город ты хочешь увидеть на карте?'
+        session_state['user_id'] = {
+            'state': 1
+        }
+        return
+    states[session_state[user_id]['state']](user_id, req, res)
+
+
 def Compile_Map(name):
     apikey = '40d1649f-0493-4b70-98ba-98533de7710b'
 
@@ -23,31 +47,6 @@ def Compile_Map(name):
 
     req2 = f'https://static-maps.yandex.ru/1.x/?ll={c[0]},{c[1]}&spn={area ** 0.5},{area ** 0.5}&l=map'
     return requests.get(req2)
-
-
-@app.route('\post', methods=['POST'])
-def get_alice_request():
-    response = {
-        'session': request.json['session'],
-        'version': request.json['version'],
-        'response': {
-            'end_session': False
-        }
-    }
-
-    handle_dialog(request.json, response)
-    return json.dumps(response)
-
-
-def handle_dialog(req, res):
-    user_id = req['session']['user_id']
-    if req['session']['new']:
-        res['response']['text'] = 'Привет, какую страну или город ты хочешь увидеть на карте?'
-        session_state['user_id'] = {
-            'state': 1
-        }
-        return
-    states[session_state[user_id]['state']](user_id, req, res)
 
 
 states = {
