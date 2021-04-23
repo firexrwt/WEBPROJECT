@@ -1,34 +1,28 @@
+from django.forms import IntegerField
 from flask import Flask
+from flask import render_template
 import request
+import wtforms
+from wtforms.validators import DataRequired
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def main_page():
-    return '<HTML>' \
-           '<HEAD>' \
-           '<p> На этом сайте вы можете увидеть любой город или страну на карте!</p>' \
-           '</HEAD>' \
-           '<BODY>' \
-           '<form action="map_compiler">' \
-           '<button>Ссылка на карту</button>' \
-           '</BODY>' \
-           '</HTML>'
+    return render_template('mainpage.html')
+
 
 
 @app.route('/map_compiler')
 def map_compiler():
-    return '<HTML>' \
-           '<HEAD>' \
-           '</HEAD>' \
-           '<BODY>' \
-           '<form name="test" method="post" action="input1.php">' \
-           '<p><b>Вводите свой город(или страну!) сюда ↓</b><br>' \
-           '<input type="text" size="40">' \
-           '</BODY>' \
-           '</HTML>' \
- \
- \
+    return render_template('map_compiler.html')
+
+
+@app.route('/review')
+def review():
+    return render_template('review.html')
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
