@@ -8,11 +8,19 @@
         <p><b>Как вас зовут?</b><br>
         <input type="text" size="40">
         </p>
-        <p><b>Как оцениваете работу нашего сайта?</b><br>
-            <input type="radio" name="rev" value="bad"> Плохо<br>
-                <input type="radio" name="rev" value="good"> Хорошо<br>
-                    <input type="radio" name="rev" value="excellent"> Отлично<br>
-        </p>
+        <p><select size="10" multiple name="review[]">
+            <option disabled>Как вы оцениваете наш сайт?</option>
+            <option value="1">1</option>
+            <option selected value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select></p>
         <p>Комментарий<br>
             <textarea name="comment" cols="40" rows="3"></textarea></p>
             <p><input type="submit" value="Отправить">
