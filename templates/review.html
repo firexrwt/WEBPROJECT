@@ -4,23 +4,19 @@
         <title>Отзыв о сайте</title>
     </HEAD>
     <BODY>
-        <form name="review" method="post" action="gratitude">
-        <p><b>Как вас зовут?</b><br>
-        <input type="text" size="40">
         </p>
-        <p><select size="10" multiple name="review[]">
-            <option disabled>Как вы оцениваете наш сайт?</option>
+        <p><b>Как вы оцените наш сайт?</b><br>
+        </p>
+        <p><select size="5" multiple name="review[]">
             <option value="1">1</option>
-            <option selected value="2">2</option>
+            <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
         </select></p>
+        <form name="review" method="post" action="gratitude">
+        <p><b>Краткое комментарий</b><br>
+        <input type="text" size="35">
         <p>Комментарий<br>
             <textarea name="comment" cols="40" rows="3"></textarea></p>
             <p><input type="submit" value="Отправить">
