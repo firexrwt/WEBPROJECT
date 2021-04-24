@@ -3,8 +3,9 @@
 		<p> На этом сайте вы можете увидеть любой город или страну на карте!</p>
 	</HEAD>
 	<BODY>
-		<form action="map_compiler">
-		<button>Ссылка на карту</button>
+		<form>
+			<p> {{form.map_redirect(type="submit", class="btn btn-primary")}} </p>
+			<p> {{form.comment_redirect(type="submit", class="btn btn-primary")}} </p>
 		</form>
 	</BODY>
 </HTML>

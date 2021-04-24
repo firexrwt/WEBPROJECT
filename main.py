@@ -1,22 +1,26 @@
-from flask import Flask
-from flask import render_template
-from api.data import MapForms, RatingsForm
-from MapCompiler import Compile_Map
 import os
+from flask import Flask, render_template, redirect
+from api.data import _MainForm, _MapForms, _RatingsForm
+from MapCompiler import Compile_Map
 
 app = Flask(__name__)
 sec_key = os.urandom(32)
 app.config['SECRET_KEY'] = sec_key
 
 
-@app.route('/')
+@app.route('/', methods=['POST', 'GET'])
 def main_page():
-    return render_template('mainpage.html')
+    form = _MainForm.MainForm()
+    if form.map_redirect.data:
+        return redirect('/map_compiler')
+    if form.comment_redirect.data:
+        return redirect('/review')
+    return render_template('mainpage.html', form=form)
 
 
 @app.route('/map_compiler', methods=['POST', 'GET'])
 def map_compiler():
-    form = MapForms.MapForm()
+    form = _MapForms.MapForm()
     country_name = form.country.data
     if country_name:
         Compile_Map(country_name)
