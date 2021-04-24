@@ -1,4 +1,4 @@
-import requests
+import requests, os
 
 
 def Compile_Map(name):
@@ -19,5 +19,8 @@ def Compile_Map(name):
 
     image = requests.get(req2)
     if image:
-        with open('static/img/map.png', 'wb') as file:
+        file_list = [f for f in os.listdir('static/img') if f.endswith('.png')]
+        for f in file_list:
+            os.remove(os.path.join('static/img', f))
+        with open(f'static/img/{name}.png', 'wb') as file:
             file.write(image.content)

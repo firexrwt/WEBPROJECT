@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Поиск страны</h1>
+<h1>Поиск страны или города</h1>
 <form method="post">
     <p>
         {{ form.country(class="form-control") }}
@@ -9,7 +9,7 @@
     </p>
     <p>
         {% if flag %}
-            <img src="/static/img/map.png">
+            <img src="{{img_src}}" alt="Карта">
         {% endif %}
     </p>
 </form>
