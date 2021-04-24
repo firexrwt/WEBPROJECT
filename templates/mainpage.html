@@ -1,11 +1,11 @@
 <HTML>
 	<HEAD>
-		<p> На этом сайте вы можете увидеть любой город или страну на карте!</p>
+		<title>{{title}}</title>
+		<h2> На этом сайте вы можете увидеть любой город или страну на карте!</h2>
 	</HEAD>
 	<BODY>
-		<form>
-			<p> {{form.map_redirect(type="submit", class="btn btn-primary")}} </p>
-			<p> {{form.comment_redirect(type="submit", class="btn btn-primary")}} </p>
+		<form action="map_compiler">
+			<button>Перейти к карте</button>
 		</form>
 	</BODY>
 </HTML>

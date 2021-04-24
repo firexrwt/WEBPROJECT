@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, request
 from api.data import _MainForm, _MapForms, _RatingsForm
 from MapCompiler import Compile_Map
 
@@ -10,12 +10,7 @@ app.config['SECRET_KEY'] = sec_key
 
 @app.route('/', methods=['POST', 'GET'])
 def main_page():
-    form = _MainForm.MainForm()
-    if form.map_redirect.data:
-        return redirect('/map_compiler')
-    if form.comment_redirect.data:
-        return redirect('/review')
-    return render_template('mainpage.html', form=form)
+    return render_template('mainpage.html', title='Главная страница')
 
 
 @app.route('/map_compiler', methods=['POST', 'GET'])
