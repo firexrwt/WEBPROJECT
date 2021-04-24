@@ -1,10 +1,16 @@
-<HTML>
-    <HEAD>
-        <title>Поиск по карте</title>
-    </HEAD>
-    <BODY>
-        <form name="butt" action="review">
-        <p><b>Вводите свой город(или страну!) сюда ↓</b><br>
-        <input type="text" size="40">
-    </BODY>
-</HTML>
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Поиск страны</h1>
+<form method="post">
+    <p>
+        {{ form.country(class="form-control") }}
+        {{ form.submit(type="submit", class="btn btn-primary") }}
+    </p>
+    <p>
+        {% if flag %}
+            <img src="../static/img/map.png" alt="Что-то пошло не так">
+        {% endif %}
+    </p>
+</form>
+{% endblock %}

@@ -14,7 +14,10 @@ def Compile_Map(name):
         delta_ur = list(map(float, jr['boundedBy']['Envelope']['upperCorner'].split()))
         area = abs(delta_ld[0] - delta_ur[0]) * abs(delta_ur[1] - delta_ld[1])
         c = coords.split()
-        print(' '.join(map(str, c)))
 
     req2 = f'https://static-maps.yandex.ru/1.x/?ll={c[0]},{c[1]}&spn={area ** 0.5},{area ** 0.5}&l=map'
-    return requests.get(req2)
+
+    image = requests.get(req2)
+    if image:
+        with open('static/img/map.png', 'wb') as file:
+            file.write(image.content)
