@@ -3,5 +3,5 @@ from wtforms import SubmitField
 
 
 class MainForm(FlaskForm):
-    map_redirect = SubmitField('Перейти к картам')
-    comment_redirect = SubmitField('Оставить коментарий')
+    map_redirect = SubmitField(label='Перейти к картам')
+    comment_redirect = SubmitField(label='Оставить коментарий')

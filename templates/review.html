@@ -1,26 +1,15 @@
 <HTML>
     <HEAD>
-        <p1>Оставьте свой отзыв!</p1>
+        <h1>Оставьте свой отзыв!</h1>
         <title>Отзыв о сайте</title>
     </HEAD>
     <BODY>
-        </p>
-        <p><b>Как вы оцените наш сайт?</b><br>
-        </p>
-        <p><select size="5" multiple name="review[]">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select></p>
-        <form name="review" method="post" action="gratitude">
-        <p><b>Краткий комментарий</b><br>
-        <input type="text" size="35">
-        <p>Комментарий<br>
-            <textarea name="comment" cols="40" rows="3"></textarea></p>
-            <p><input type="submit" value="Отправить">
-                <input type="reset" value="Очистить"></p>
+        <form action="" method="post">
+
+            <p> {{form.rating.label}} {{form.rating}} </p>
+            <p> {{form.short_comment.label}} <br>
+                {{form.short_comment}} <br>
+                {{form.about(class="text_area_field")}} </p>
         </form>
     </BODY>
 </HTML>

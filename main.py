@@ -11,14 +11,13 @@ app.config['SECRET_KEY'] = sec_key
 @app.route('/', methods=['POST', 'GET'])
 def main_page():
     form = _MainForm.MainForm()
-    r_url = url_for('main_page')
+    print(form.validate_on_submit())
     if form.validate_on_submit():
         if form.map_redirect.data:
-            r_url = url_for('map_compiler')
-        elif form.comment_redirect.data:
-            r_url = url_for('review')
-        return redirect('/review')
-    return render_template('mainpage.html', title='Главная страница', form=form, redirect_url=r_url)
+            return redirect(url_for("map_compiler"))
+        if form.comment_redirect.data:
+            return redirect(url_for("review"))
+    return render_template('mainpage.html', title='Главная страница', form=form)
 
 
 @app.route('/map_compiler', methods=['POST', 'GET'])
@@ -37,7 +36,8 @@ def map_compiler():
 
 @app.route('/review')
 def review():
-    return render_template('review.html')
+    form = _RatingsForm.RatingForm()
+    return render_template('review.html', form=form)
 
 
 if __name__ == '__main__':

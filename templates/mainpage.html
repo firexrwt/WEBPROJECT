@@ -4,9 +4,10 @@
 		<h2> На этом сайте вы можете увидеть любой город или страну на карте!</h2>
 	</HEAD>
 	<BODY>
-		<form action="{{redirect_url}}">
-            {{form.map_redirect(class="btn btn_primary")}}<br>
-			<br>{{form.comment_redirect(class="btn btn_primary")}}
+		<form action="" method="post">
+			{{form.hidden_tag()}}
+            {{form.map_redirect}}<br><br>
+			{{form.comment_redirect}}
 		</form>
 	</BODY>
 </HTML>
