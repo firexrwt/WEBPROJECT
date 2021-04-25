@@ -1,17 +1,23 @@
 import os
-from flask import Flask, render_template, Request, redirect, url_for
+from flask import Flask, render_template, redirect, url_for
 from api.data import _MainForm, _MapForms, _RatingsForm
 from MapCompiler import Compile_Map
+from api import api_resource
+from flask_restful import Api
+import requests
 
 app = Flask(__name__)
 sec_key = os.urandom(32)
 app.config['SECRET_KEY'] = sec_key
+api = Api(app)
+
+api.add_resource(api_resource.RateResource, '/api/comment/<int:rate_id>')
+api.add_resource(api_resource.RateListResource, '/api/comment')
 
 
 @app.route('/', methods=['POST', 'GET'])
 def main_page():
     form = _MainForm.MainForm()
-    print(form.validate_on_submit())
     if form.validate_on_submit():
         if form.map_redirect.data:
             return redirect(url_for("map_compiler"))
@@ -37,6 +43,13 @@ def map_compiler():
 @app.route('/review')
 def review():
     form = _RatingsForm.RatingForm()
+    if form.validate_on_submit():
+        requests.post('http://127.0.0.1:8080/api/comment', json={
+            'rating': form.rating.data,
+            'comment_top': form.short_comment.data,
+            'comment_bottom': form.about.data
+        })
+    print(requests.get('http://127.0.0.1:8080/api/comment').json())
     return render_template('review.html', form=form)
 
 

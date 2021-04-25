@@ -6,6 +6,8 @@ from .db_session import SqlAlchemyBase
 
 
 class Rating(SqlAlchemyBase, UserMixin, SerializerMixin):
+    __tablename__ = 'Комментарии'
+
     id = sql.Column(sql.Integer, autoincrement=True, primary_key=True)
 
     comment_top = sql.Column(sql.String, nullable=True)

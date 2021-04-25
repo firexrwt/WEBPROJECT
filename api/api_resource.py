@@ -1,10 +1,6 @@
-from flask import Flask, jsonify
-from flask_restful import Api, abort, reqparse, Resource
+from flask import jsonify
+from flask_restful import  abort, reqparse, Resource
 from .data import db_session, ratings
-
-
-app = Flask(__name__)
-api = Api(app)
 
 
 def abort_if_empty(com_id):
