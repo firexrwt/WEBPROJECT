@@ -44,11 +44,12 @@ def map_compiler():
 def review():
     form = _RatingsForm.RatingForm()
     if form.validate_on_submit():
-        requests.post('http://127.0.0.1:8080/api/comment', json={
-            'rating': form.rating.data,
-            'comment_top': form.short_comment.data,
-            'comment_bottom': form.about.data
-        })
+        if form.submit.data:
+            requests.post('http://127.0.0.1:8080/api/comment', json={
+                'rating': form.rating.data,
+                'comment_top': form.short_comment.data,
+                'comment_bottom': form.about.data
+            })
     print(requests.get('http://127.0.0.1:8080/api/comment').json())
     return render_template('review.html', form=form)
 
