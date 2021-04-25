@@ -55,5 +55,5 @@ def review():
 
 
 if __name__ == '__main__':
-    db_session.global_init('../db/db_file.sqlite')
+    db_session.global_init('api/db/db_file.sqlite')
     app.run(port=8080, host='127.0.0.1')
