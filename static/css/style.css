@@ -2,10 +2,9 @@
    margin-left: 100px;
 }
 .col-md6 {
-   margin-left: 80px;
-   margin-top: 5px;
+   margin-top: 10px;
    width: 600px;
-   background-color: #E8E8E8;
+   background-color: #F5F5F5;
 }
 .border {
    border-left: 1px solid black!important;
@@ -18,4 +17,9 @@
 }
 .offset-rate {
    margin-left: 130px;
+}
+.taf {
+   margin-top: 10px;
+   width: 430px;
+   height: 150px;
 }

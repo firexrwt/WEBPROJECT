@@ -2,15 +2,33 @@
 
 {% block content %}
 <h1>Поиск страны или города</h1>
-<form method="post">
+<form action="" method="post">
     <p>
         {{ form.country(class="form-control") }}
+    </p>
+    <p>
         {{ form.submit(type="submit", class="btn btn-primary") }}
+        {{ form.return_to_main(type="submit", class="btn btn-primary") }}
     </p>
     <p>
         {% if flag %}
             <img src="{{img_src}}" alt="Карта">
         {% endif %}
+        {{message}}
+    </p>
+    <p>
+        {% for item in comments %}
+            <div class="col-md6 border rounded">
+                <h3 class="comment-offset">{{item.comment_top}}</h3>
+                <div class="comment-offset">
+                    {{item.comment_bottom}}
+                </div> <br>
+                <div class="comment-offset">
+                    Рейтинг - {{item.rating}}/5 Дата Написания - {{item.post_date}} <br>
+                    Автор - {{item.user.nickname}}
+                </div>
+            </div>
+        {% endfor %}
     </p>
 </form>
 {% endblock %}

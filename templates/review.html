@@ -1,16 +1,17 @@
-<HTML>
+{% extends "base.html" %}
+
+{% block content %}
     <HEAD>
         <h1>Оставьте свой отзыв!</h1>
         <title>Отзыв о сайте</title>
     </HEAD>
     <BODY>
         <form action="" method="post">
-
             <p> {{form.rating.label}} {{form.rating}} </p>
             <p> {{form.short_comment.label}} <br>
                 {{form.short_comment}} <br>
-                {{form.about(class="text_area_field")}} </p>
-            <p> {{form.submit}}</p>
+                {{form.about(class="text_area_field taf")}} </p>
+            <p> {{form.submit(class="btn btn-primary")}}</p>
         </form>
     </BODY>
-</HTML>
+{% endblock %}

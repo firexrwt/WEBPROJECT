@@ -8,12 +8,15 @@ def Compile_Map(name):
     coord_find = requests.get(req)
     if coord_find:
         jsonresp = coord_find.json()
-        jr = jsonresp['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']
-        coords = jr['Point']['pos']
-        delta_ld = list(map(float, jr['boundedBy']['Envelope']['lowerCorner'].split()))
-        delta_ur = list(map(float, jr['boundedBy']['Envelope']['upperCorner'].split()))
-        area = abs(delta_ld[0] - delta_ur[0]) * abs(delta_ur[1] - delta_ld[1])
-        c = coords.split()
+        try:
+            jr = jsonresp['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']
+            coords = jr['Point']['pos']
+            delta_ld = list(map(float, jr['boundedBy']['Envelope']['lowerCorner'].split()))
+            delta_ur = list(map(float, jr['boundedBy']['Envelope']['upperCorner'].split()))
+            area = abs(delta_ld[0] - delta_ur[0]) * abs(delta_ur[1] - delta_ld[1])
+            c = coords.split()
+        except IndexError:
+            return {'Status': 'Something went wrong'}
 
     req2 = f'https://static-maps.yandex.ru/1.x/?ll={c[0]},{c[1]}&spn={area ** 0.5},{area ** 0.5}&l=map'
 
@@ -24,3 +27,4 @@ def Compile_Map(name):
             os.remove(os.path.join('static/img', f))
         with open(f'static/img/{name}.png', 'wb') as file:
             file.write(image.content)
+        return {'Status': 'OK'}
