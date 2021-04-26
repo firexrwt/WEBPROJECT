@@ -54,7 +54,8 @@ def map_compiler():
                                       os.path.abspath('templates/map_compiler.html'))
         else:
             message = 'Пожалуйста введите локацию повторно'
-    return render_template('map_compiler.html', form=form, title='Поиск страны', flag=flag, img_src=img_src, comments=comms)
+    return render_template('map_compiler.html', form=form, title='Поиск страны', flag=flag, img_src=img_src,
+                           comments=comms, message=message)
 
 
 @app.route('/review', methods=['POST', 'GET'])
