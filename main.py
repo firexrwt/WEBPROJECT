@@ -41,7 +41,7 @@ def map_compiler():
     country_name = form.country.data
     session = review_session.create_session()
     img_src = None
-    message = None
+    message = ''
     flag = False
     comms = session.query(ratings.Rating).all()
     if form.return_to_main.data:
