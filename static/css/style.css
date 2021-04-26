@@ -1,0 +1,21 @@
+.offset {
+   margin-left: 100px;
+}
+.col-md6 {
+   margin-left: 80px;
+   margin-top: 5px;
+   width: 600px;
+   background-color: #E8E8E8;
+}
+.border {
+   border-left: 1px solid black!important;
+   border-right: 1px solid black!important;
+   border-top: 1px solid black!important;
+   border-bottom: 1px solid black!important;
+}
+.comment-offset {
+   margin-left: 20px;
+}
+.offset-rate {
+   margin-left: 130px;
+}

@@ -14,3 +14,6 @@ class Rating(SqlAlchemyBase, UserMixin, SerializerMixin):
     comment_bottom = sql.Column(sql.String, nullable=True)
     rating = sql.Column(sql.Integer, nullable=False)
     post_date = sql.Column(sql.DateTime, default=datetime.datetime)
+
+    def __repr__(self):
+        return '{} {} {} {} {}'.format(self.comment_top, self.comment_bottom, self.rating, self.id, self.post_date)

@@ -45,7 +45,7 @@ class RateListResource(Resource):
         sess = db_session.create_session()
 
         rate = ratings.Rating(
-            comment_top= args['comment_top'],
+            comment_top=args['comment_top'],
             comment_bottom=args['comment_bottom'],
             rating=args['rating']
         )
