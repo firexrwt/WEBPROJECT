@@ -4,7 +4,7 @@
 <h1>Поиск страны или города</h1>
 <form action="" method="post">
     <p>
-        {{ form.country(class="form-control") }}
+        {{ form.country(class="form-control search_bar") }}
     </p>
     <p>
         {{ form.submit(type="submit", class="btn btn-primary") }}
@@ -27,6 +27,13 @@
                     Рейтинг - {{item.rating}}/5 Дата Написания - {{item.post_date}} <br>
                     Автор - {{item.user.nickname}}
                 </div>
+                {% if current_user.is_authenticated and current_user == item.user %}
+                    <div>
+                        <a href="/comment_delete/{{ item.id }}" class="btn btn-danger del_btn">
+                            Удалить
+                        </a>
+                    </div>
+                {% endif %}
             </div>
         {% endfor %}
     </p>

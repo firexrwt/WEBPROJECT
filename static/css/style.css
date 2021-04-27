@@ -2,7 +2,7 @@
    margin-left: 100px;
 }
 .col-md6 {
-   margin-top: 10px;
+   margin-top: 15px;
    width: 600px;
    background-color: #F5F5F5;
 }
@@ -14,6 +14,9 @@
 }
 .comment-offset {
    margin-left: 20px;
+   max-width: 580px;
+   text-overflow: ellipsis;
+   word-break:break-all;
 }
 .offset-rate {
    margin-left: 130px;
@@ -22,4 +25,11 @@
    margin-top: 10px;
    width: 430px;
    height: 150px;
+}
+.search_bar {
+   width: 600px;
+}
+.del_btn {
+   margin-left:370px;
+   margin-bottom:20px;
 }

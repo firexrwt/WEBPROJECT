@@ -35,6 +35,15 @@ def main_page():
                            form=form, median=median)
 
 
+@app.route('/comment_delete/<int:comment_id>')
+def delete_comment(comment_id):
+    session = review_session.create_session()
+    comment = session.query(ratings.Rating).filter(ratings.Rating.id == comment_id).first()
+    session.delete(comment)
+    session.commit()
+    return redirect('/map_compiler')
+
+
 @app.route('/map_compiler', methods=['POST', 'GET'])
 def map_compiler():
     form = _MapForms.MapForm()
@@ -43,7 +52,7 @@ def map_compiler():
     img_src = None
     message = ''
     flag = False
-    comms = session.query(ratings.Rating).all()
+    comms = list(session.query(ratings.Rating).all())[::-1]
     if form.return_to_main.data:
         return redirect(url_for('main_page'))
     if country_name:
